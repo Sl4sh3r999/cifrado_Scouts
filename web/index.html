@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cifrado Scouts</title>
+<meta name="description" content="Cifra mensajes con claves scout (gato, siete cruces, murciélago, cenit polar, radiofónico...) y descarga o comparte el PDF.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Cifrado Scouts</h1>
+  <p>Cifra un mensaje combinando varias claves y descárgalo en PDF o compártelo. Todo ocurre en tu navegador: el mensaje no se envía a ningún lado.</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1. Mensaje</h2>
+    <div class="editor">
+      <div id="resaltado" aria-hidden="true"></div>
+      <textarea id="mensaje" rows="5" spellcheck="false" placeholder="Escribe aquí tu mensaje…"></textarea>
+    </div>
+
+    <h2>2. Elige la clave</h2>
+    <p class="ayuda">Selecciona parte del texto con el mouse o el dedo y toca una clave. Si no seleccionas nada, se cifra todo el mensaje.</p>
+    <div id="sel-info" class="sel-info" aria-live="polite"></div>
+    <div id="chips" class="chips"></div>
+
+    <h3>Tramos</h3>
+    <div id="tramos" class="tramos"></div>
+    <button id="agregar" type="button" class="sec">+ Agregar tramo</button>
+    <p id="resumen" class="resumen" aria-live="polite"></p>
+  </section>
+
+  <section class="card">
+    <h2>3. Resultado</h2>
+    <div class="vista"><canvas id="vista"></canvas></div>
+
+    <div class="opciones">
+      <label>Título (opcional) <input id="titulo" type="text" maxlength="80"></label>
+      <label class="check"><input id="leyenda" type="checkbox" checked> Incluir leyenda de las claves en el PDF (página aparte)</label>
+    </div>
+
+    <div class="acciones">
+      <button id="pdf" type="button" class="prim">Descargar PDF</button>
+      <button id="compartir-pdf" type="button" class="sec" hidden>Compartir PDF</button>
+      <button id="compartir-img" type="button" class="sec" hidden>Compartir imagen</button>
+      <button id="copiar-texto" type="button" class="sec">Copiar texto</button>
+      <button id="copiar-img" type="button" class="sec">Copiar imagen</button>
+      <button id="bajar-img" type="button" class="sec">Descargar imagen</button>
+    </div>
+    <p id="estado" class="estado" aria-live="polite"></p>
+  </section>
+</main>
+
+<footer>
+  <p>Código abierto en <a href="https://github.com/Sl4sh3r999/cifrado_Scouts">GitHub</a>. PDF generado con <a href="https://github.com/parallax/jsPDF">jsPDF</a> (MIT).</p>
+</footer>
+
+<script src="vendor/jspdf.umd.min.js"></script>
+<script src="ciphers.js"></script>
+<script src="render.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

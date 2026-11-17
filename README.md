@@ -51,6 +51,21 @@ powershell -ExecutionPolicy Bypass -File build\build.ps1
 
 El resultado es `dist\Codificador.exe`: un solo archivo, sin instalación.
 
+## Versión web
+
+La carpeta `web/` contiene una versión que corre completa en el navegador (sin
+servidor): mismos cifrados, selección por tramos, descarga de PDF, compartir
+(en celular) y copiar texto/imagen. Se publica con GitHub Pages mediante
+`.github/workflows/pages.yml`. Para probarla en local:
+
+```bash
+py -m http.server 8765 --directory web
+```
+
+y abrir <http://localhost:8765>. Los cifrados están escritos en Python
+(`src/ciphers`) y en JavaScript (`web/ciphers.js`); al agregar uno nuevo hay que
+sumarlo en ambos. PDF con [jsPDF](https://github.com/parallax/jsPDF) (MIT).
+
 ## Estructura
 
 ```
